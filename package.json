@@ -1,0 +1,36 @@
+{
+	"name": "stitch-js",
+	"version": "1.0",
+	"description": "A script to "stitch" script files together before release.",
+	"author": "John Houlder <john.h@toxic-productions.com>",
+	"contributors": [{
+		"name": "John Houlder",
+		"email": "john.h@toxic-productions.com"
+	}],
+	"bin": {
+		"stitchjs": "./stitch.js"
+	},
+	"scripts": {
+		"start": "node stitch.js"
+	},
+	"main": "stitch.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gtoxic/stitch-js"
+	},
+	"bugs": {
+		"url": "https://github.com/gtoxic/stitch-js/issues"
+	},
+	"keywords": [
+		"minify",
+		"combine",
+		"files"
+	],
+	"preferGlobal": true,
+	"private": false,
+	"os": [
+		"darwin",
+		"linux"
+	],
+	"license": "GPL"
+}
