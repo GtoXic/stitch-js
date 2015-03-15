@@ -1,10 +1,9 @@
-#!/usr/bin/env node
 var fs = require("fs");
 var path = require("path");
 
 if(process.argv.length < 4){
 	console.log("Missing parameters. Syntax:");
-	console.log("%s <input> <output>",process.argv[0]);
+	console.log("stitchjs <input> <output>");
 	process.exit(1);
 }
 var file = process.argv[2];
