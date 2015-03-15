@@ -7,6 +7,7 @@ if(process.argv.length < 4){
 	console.log("stitchjs <input> <output>");
 	process.exit(1);
 }
+
 var file = process.argv[2];
 var out = process.argv[3];
 
