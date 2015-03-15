@@ -1,7 +1,7 @@
 {
 	"name": "stitch-js",
 	"version": "1.0",
-	"description": "A script to "stitch" script files together before release.",
+	"description": "A script to \"stitch\" script files together before release.",
 	"author": "John Houlder <john.h@toxic-productions.com>",
 	"contributors": [{
 		"name": "John Houlder",
