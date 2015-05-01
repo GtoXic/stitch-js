@@ -23,13 +23,29 @@ var lines = contents.split("\n");
 console.log("Moving through %s",file);
 for(line in lines){
 	line = lines[line].toString().trim();
-	if(/^\/\/include-file (.*)/igm.test(line)){
-		var incfile = /^\/\/include-file (.*)/igm.exec(line)[1];
+	if(/\|#IMPORT_FILE (.*)#\|/igm.test(line)){
+		var incfile = /\|#IMPORT_FILE (.*)#\|/igm.exec(line)[1];
+		var linenum = -1;
+		if(incfile.indexOf(':') !== -1){
+			linenum = incfile.split(':')[1];
+			incfile = incfile.split(':')[0];
+		}
 		if(fs.existsSync(path.join(fpath,incfile))){
 			try{
 				var incfilecont = fs.readFileSync(path.join(fpath,incfile)).toString();
-				line = incfilecont;
-				console.log("Included %s",incfile);
+				if(linenum !== -1){
+					var lines = incfilecont.split('\n');
+					if(lines.length > linenum){
+						console.log("Skipping inclusion of %s (line number too high)",incfile);
+					}else{
+						var l = lines[linenum-1].replace(/(\r|\n|\r\n)/gm,"");
+						line = line.replace(/\|#IMPORT_FILE (.*)#\|/igm,l);
+						console.log("Included line %s from %s",linenum,incfile);
+					}
+				}else{
+					line = line.replace(/\|#IMPORT_FILE (.*)#\|/igm,incfilecont);
+					console.log("Included %s",incfile);
+				}
 			}catch(e){
 				console.log(e);
 				console.log("Skipping inclusion of %s (error)",incfile);
